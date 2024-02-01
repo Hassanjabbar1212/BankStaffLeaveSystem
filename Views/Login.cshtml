@@ -1,0 +1,88 @@
+﻿@model Employees
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+            .login-container h3 {
+                color: #1877f2;
+            }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+            .input-group label {
+                display: block;
+                margin-bottom: 5px;
+                color: #65676b;
+            }
+
+            .input-group input {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid #dddfe2;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+
+        .login-btn {
+            background-color: #1877f2;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h3>Login to Your Account</h3>
+        <form asp-controller="Home" asp-action="Login" method="post">
+            <div class="input-group">
+                <label asp-for="Email">Username or Email</label>
+                <input asp-for="Email" type="text" placeholder="Enter your username or email">
+            </div>
+
+            <div class="input-group">
+                <label asp-for="Password">Password</label>
+                <input asp-for="Password" type="password" placeholder="Enter your password" required>
+            </div>
+
+            <!-- Display validation errors -->
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <button type="submit" class="login-btn">Log In</button>
+
+            <!-- "Forgot Password" link -->
+            <p class="forgot-password-link">
+                <a asp-controller="User" asp-action="ForgotPassword">Forgot Password?</a>
+            </p>
+        </form>
+    </div>
+</body>
+</html>

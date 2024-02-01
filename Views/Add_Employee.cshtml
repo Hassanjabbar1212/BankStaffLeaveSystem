@@ -1,0 +1,77 @@
+﻿@model Employees
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create or Edit Employee</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Add your custom styles here */
+        body {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Create or Edit Employee</h1>
+    <form asp-action="Add_Employee" asp-controller="Employee" method="post">
+    <div class="form-group">
+        <label asp-for="FName">First Name:</label>
+        <input asp-for="FName" class="form-control" required />
+        <span asp-validation-for="FName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="LName">Last Name:</label>
+        <input asp-for="LName" class="form-control" required />
+        <span asp-validation-for="LName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email">Email:</label>
+        <input asp-for="Email" class="form-control" required />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Phone">Phone:</label>
+        <input asp-for="Phone" class="form-control" />
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password">Password:</label>
+        <input asp-for="Password" type="password" class="form-control" required />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Designation">Designation:</label>
+        <input asp-for="Designation" class="form-control" />
+        <span asp-validation-for="Designation" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Address">Address:</label>
+        <textarea asp-for="Address" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+
+        <div class="form-group">
+            <label for="City">Bank</label>
+            <select class="form-control" asp-for="BranchId" asp-items="@ViewBag.Branch">
+                <option value="">Select Branch</option>
+            </select>
+        </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+    <!-- Include Bootstrap JS and Popper.js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

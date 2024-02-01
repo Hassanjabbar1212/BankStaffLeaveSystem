@@ -1,0 +1,34 @@
+﻿@*@model List<Bank.Models.Approved>*@
+@model List<bool?>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.HasValue)
+                    {
+                        if (item.Value)
+                        {
+                            <span>Approved</span>
+                        }
+                        else
+                        {
+                            <span>Rejected</span>
+                        }
+                    }
+                    else
+                    {
+                        <span>Unknown</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,67 @@
+﻿@model List<LeaveViewModel>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Information</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        .leave-info {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Leave Information</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Employee Name</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>BranchName</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var leaveInfo in Model)
+            {
+                <tr>
+                    <td>@leaveInfo.Fname @leaveInfo.Lname</td>
+                    <td>@leaveInfo.StartDate.ToString("yyyy-MM-dd")</td>
+                    <td>@leaveInfo.EndDate.ToString("yyyy-MM-dd")</td>
+                    <td>@leaveInfo.BranchName</td>
+                    <td>
+                        <form asp-controller="Leave" asp-action="LeaveResponce" method="post">
+                            <input type="hidden" name="LeaveId" value="@leaveInfo.LeaveId" />
+                            <input type="hidden" name="EmployeeID" value="@leaveInfo.EmployeeID" />
+                            <input type="hidden" name="status" value="true" />
+                            <button type="submit" class="btn btn-success">Approve</button>
+                        </form>
+                        <form asp-controller="Leave" asp-action="LeaveResponce" method="post">
+                            <input type="hidden" name="leaveId" value="@leaveInfo.LeaveId" />
+                            <input type="hidden" name="EmployeeID" value="@leaveInfo.EmployeeID />
+                            <input type="hidden" name="status" value="false" />
+                            <button type="submit" class="btn btn-danger">Reject</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+﻿@model Leave
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- Include Select2 CSS and JS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/css/select2.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
+<div class="container">
+    <form asp-action="LeaveRequest" asp-controller="Leave">
+        <div class="form-group">
+            <label asp-for="Reason">Enter Reason</label>
+            <input asp-for="Reason" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="StartDate">Enter StartDate</label>
+            <input asp-for="StartDate" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="EndDate">Enter EndDate</label>
+            <input asp-for="EndDate" class="form-control" />
+        </div>
+        @* <div class="form-group">
+        <label asp-for="StartDate">Start Date</label>
+        <input asp-for="StartDate" class="form-control" type="date"/>
+        </div>*@
+        @* <div class="form-group">
+        <label asp-for="EndDate">End Date</label>
+        <input asp-for="EndDate"  class="form-control" type="date" />
+        </div>*@
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Initialize Select2 for each dropdown
+        $('#groupDropdown').select2();
+        $('#leaveTypeDropdown').select2();
+        $('#substituteTeacherDropdown').select2();
+    });
+</script>
